@@ -5,6 +5,10 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "winform-app", "winform-app\winform-app.csproj", "{F9929204-E364-4CFB-8A72-ADBAFBD79109}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "dominio1\dominio.csproj", "{012CB161-8710-4843-BE44-1057BBEA7ECD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocio", "negocio1\negocio.csproj", "{631EBC10-DEA8-4D4B-BAB5-57DFBCF6ABFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{F9929204-E364-4CFB-8A72-ADBAFBD79109}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9929204-E364-4CFB-8A72-ADBAFBD79109}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9929204-E364-4CFB-8A72-ADBAFBD79109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{012CB161-8710-4843-BE44-1057BBEA7ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{012CB161-8710-4843-BE44-1057BBEA7ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{012CB161-8710-4843-BE44-1057BBEA7ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{012CB161-8710-4843-BE44-1057BBEA7ECD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{631EBC10-DEA8-4D4B-BAB5-57DFBCF6ABFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{631EBC10-DEA8-4D4B-BAB5-57DFBCF6ABFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{631EBC10-DEA8-4D4B-BAB5-57DFBCF6ABFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{631EBC10-DEA8-4D4B-BAB5-57DFBCF6ABFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
