@@ -25,7 +25,7 @@ namespace negocio
         {
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consulta;
-        }
+        }   
         public void ejecutarLectura()
         {
             comando.Connection = conexion;

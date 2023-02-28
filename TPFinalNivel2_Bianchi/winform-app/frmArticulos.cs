@@ -47,7 +47,7 @@ namespace winform_app
             {
                 pbxArticulos.Load(imagen);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 pbxArticulos.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
             }
@@ -57,6 +57,13 @@ namespace winform_app
         {
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             cargarImagen(seleccionado.ImagenUrl);
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAlta alta = new frmAlta();
+            alta.ShowDialog();
+            cargar();
         }
     }
 }

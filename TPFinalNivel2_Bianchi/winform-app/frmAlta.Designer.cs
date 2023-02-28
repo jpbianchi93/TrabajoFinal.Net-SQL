@@ -1,6 +1,6 @@
 ﻿namespace winform_app
 {
-    partial class frmAltaArticulo
+    partial class frmAlta
     {
         /// <summary>
         /// Required designer variable.
@@ -173,6 +173,7 @@
             this.btnAceptar.TabIndex = 20;
             this.btnAceptar.Text = "&Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
@@ -182,6 +183,7 @@
             this.btnCancelar.TabIndex = 21;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnImagenLocal
             // 
@@ -200,7 +202,7 @@
             this.pbxArticulo.TabIndex = 23;
             this.pbxArticulo.TabStop = false;
             // 
-            // frmAltaArticulo
+            // frmAlta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -227,9 +229,10 @@
             this.MaximumSize = new System.Drawing.Size(530, 300);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(530, 300);
-            this.Name = "frmAltaArticulo";
+            this.Name = "frmAlta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Alta Artículo";
+            this.Text = "Alta";
+            this.Load += new System.EventHandler(this.frmAlta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
