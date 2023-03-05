@@ -78,12 +78,17 @@ namespace winform_app
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Articulo seleccionado;
-            seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            if(dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado;
+                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
 
-            frmAlta modificar = new frmAlta(seleccionado);
-            modificar.ShowDialog();
-            cargar();
+                frmAlta modificar = new frmAlta(seleccionado);
+                modificar.ShowDialog();
+                cargar();
+            }
+            else
+                MessageBox.Show("Seleccione el artículo que desea modificar", "Atención");
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -126,6 +131,8 @@ namespace winform_app
                 cboCriterio.Items.Add("Contiene");
 
             }
+            txtBuscar.Enabled = false;
+            txtBuscar.Clear();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -133,16 +140,39 @@ namespace winform_app
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
-                string campo = cboCampo.SelectedItem.ToString();
-                string criterio = cboCriterio.SelectedItem.ToString();
-                string busqueda = txtBuscar.Text;
-
-                dgvArticulos.DataSource = negocio.filtrar(campo, criterio, busqueda);
+                if (!(cboCampo.SelectedIndex < 0 || cboCriterio.SelectedIndex < 0))
+                {
+                    string campo = cboCampo.SelectedItem.ToString();
+                    string criterio = cboCriterio.SelectedItem.ToString();
+                    string busqueda = txtBuscar.Text;
+                    dgvArticulos.DataSource = negocio.filtrar(campo, criterio, busqueda);
+                }
+                else
+                    MessageBox.Show("Debe completar los datos de búsqueda para continuar", "Atención");
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void cboCriterio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtBuscar.Enabled = true;
+        }
+
+        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+
+            if (opcion == "Precio")
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                 (e.KeyChar != '.'))
+                {
+                    e.Handled = true;
+                }
             }
         }
     }

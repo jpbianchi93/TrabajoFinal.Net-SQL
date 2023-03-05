@@ -39,7 +39,7 @@
             this.pbxArticulos = new System.Windows.Forms.PictureBox();
             this.lblCampo = new System.Windows.Forms.Label();
             this.lblCategoria = new System.Windows.Forms.Label();
-            this.lblFiltro = new System.Windows.Forms.Label();
+            this.lblBuscar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulos)).BeginInit();
             this.SuspendLayout();
@@ -107,15 +107,18 @@
             this.cboCriterio.Name = "cboCriterio";
             this.cboCriterio.Size = new System.Drawing.Size(121, 21);
             this.cboCriterio.TabIndex = 1;
+            this.cboCriterio.SelectedIndexChanged += new System.EventHandler(this.cboCriterio_SelectedIndexChanged);
             // 
             // txtBuscar
             // 
             this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBuscar.Location = new System.Drawing.Point(415, 38);
+            this.txtBuscar.Enabled = false;
+            this.txtBuscar.Location = new System.Drawing.Point(426, 38);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(456, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(445, 20);
             this.txtBuscar.TabIndex = 2;
+            this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
             // 
             // dgvArticulos
             // 
@@ -159,21 +162,21 @@
             this.lblCategoria.TabIndex = 16;
             this.lblCategoria.Text = "Criterio:";
             // 
-            // lblFiltro
+            // lblBuscar
             // 
-            this.lblFiltro.AutoSize = true;
-            this.lblFiltro.Location = new System.Drawing.Point(377, 42);
-            this.lblFiltro.Name = "lblFiltro";
-            this.lblFiltro.Size = new System.Drawing.Size(32, 13);
-            this.lblFiltro.TabIndex = 17;
-            this.lblFiltro.Text = "Filtro:";
+            this.lblBuscar.AutoSize = true;
+            this.lblBuscar.Location = new System.Drawing.Point(377, 42);
+            this.lblBuscar.Name = "lblBuscar";
+            this.lblBuscar.Size = new System.Drawing.Size(43, 13);
+            this.lblBuscar.TabIndex = 17;
+            this.lblBuscar.Text = "Buscar:";
             // 
             // frmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(964, 391);
-            this.Controls.Add(this.lblFiltro);
+            this.Controls.Add(this.lblBuscar);
             this.Controls.Add(this.lblCategoria);
             this.Controls.Add(this.lblCampo);
             this.Controls.Add(this.pbxArticulos);
@@ -210,7 +213,7 @@
         private System.Windows.Forms.PictureBox pbxArticulos;
         private System.Windows.Forms.Label lblCampo;
         private System.Windows.Forms.Label lblCategoria;
-        private System.Windows.Forms.Label lblFiltro;
+        private System.Windows.Forms.Label lblBuscar;
     }
 }
 

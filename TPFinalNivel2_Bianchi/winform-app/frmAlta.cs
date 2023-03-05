@@ -44,34 +44,42 @@ namespace winform_app
                 if (articulo == null)
                     articulo = new Articulo();
                 
-                articulo.Codigo = txtCodigo.Text;
-                articulo.Nombre = txtNombre.Text;
-                articulo.Descripcion = txtDescripcion.Text;
-                articulo.Marca = (Marca)cboMarca.SelectedItem;
-                articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
-                articulo.ImagenUrl = txtImagenUrl.Text;
-                articulo.Precio = float.Parse(txtPrecio.Text);
-
-                if(articulo.Id != 0)
+                
+                if(!(txtCodigo.Text == "" && txtNombre.Text == "" && cboMarca == null && cboCategoria == null && txtPrecio.Text == ""))
                 {
-                    negocio.modificar(articulo);
-                    MessageBox.Show("Modificado exitosamente");
+                    articulo.Codigo = txtCodigo.Text;
+                    articulo.Nombre = txtNombre.Text;
+                    articulo.Descripcion = txtDescripcion.Text;
+                    articulo.Marca = (Marca)cboMarca.SelectedItem;
+                    articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                    articulo.ImagenUrl = txtImagenUrl.Text;
+                    articulo.Precio = float.Parse(txtPrecio.Text);
+
+                    if(articulo.ImagenUrl != "" && !(txtImagenUrl.Text.ToUpper().Contains("HTTP")))
+                        File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
+                    
+                    if(articulo.Id != 0)
+                    {
+                        negocio.modificar(articulo);
+                        MessageBox.Show("Modificado exitosamente");
+                    }
+                    else
+                    {
+                        negocio.agregar(articulo);
+                        MessageBox.Show("Agregado exitosamente");
+                    }
                 }
                 else
                 {
-                    negocio.agregar(articulo);
-                    MessageBox.Show("Agregado exitosamente");
+                    MessageBox.Show("Completar los Campos Marcados con *", "Atención");
                 }
 
-                if(articulo != null && !(txtImagenUrl.Text.ToUpper().Contains("HTTP")))
-                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
 
                 Close();
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                MessageBox.Show("Por favor, completar los casilleros","Atención");
             }
         }
 
@@ -128,6 +136,15 @@ namespace winform_app
             {
                 txtImagenUrl.Text = archivo.FileName; 
                 cargarImagen(archivo.FileName);
+            }
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
             }
         }
     }
